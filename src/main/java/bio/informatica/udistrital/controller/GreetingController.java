@@ -7,9 +7,10 @@ package bio.informatica.udistrital.controller;
 import bio.informatica.udistrital.logic.Matrix;
 import bio.informatica.udistrital.logic.NitrogenousBase;
 import bio.informatica.udistrital.model.Greeting;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -70,6 +71,18 @@ public class GreetingController {
         value.put("alignment", m.getPathWay());
 
         return value;
+    }
+
+    @RequestMapping(value = "/post-file", method = RequestMethod.POST)
+    public Map<String, String> handleFileUpload(MultipartHttpServletRequest defaultMultipartHttpServletRequest, RedirectAttributes redirectAttributes) {
+
+        /*storageService.store(file);
+        redirectAttributes.addFlashAttribute("message",
+                "You successfully uploaded " + file.getOriginalFilename() + "!");*/
+        Map<String, String> map = new HashMap<>();
+        map.put("message", "successful");
+
+        return map;
     }
 
 }
