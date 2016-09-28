@@ -1,11 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
-
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<spring:url value="/WEB-INF/jsp/images/ud_logo.jpg" var="logoImg"/>
-
 <html lang="en">
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -75,16 +67,15 @@ IENY
                 </pre>
             </div>
         </div>
-
         <div class="row">
             <div class="col-md-2">
-                <form>
+                <form id="subirArchivo">
                     <div class="form-group">
-                        <label for="exampleInputFile">Fasta file:</label>
-                        <input type="file" id="exampleInputFile">
+                        <label for="archivoFasta">Fasta file:</label>
+                        <input type="file" id="archivoFasta" name="archivoFasta">
                     </div>
 
-                    <button type="submit" class="btn btn-default">Submit</button>
+                    <button id="botonSubirArchivo" type="button" class="btn btn-default">Submit</button>
                 </form>
             </div>
 
@@ -94,12 +85,21 @@ IENY
 
             <table class="table table-bordered">
                 <%
-                    int i = 0, j = 0;
-                    for (i = 0; i < 10; i++) {
+                int i = 0, j = 0;
+                for (i = 0; i < 10; i++) {
                 %>
-                <tr><% for (j = 0; j < 10; j++) { %>
-                    <td><%= i + "" + j %></td><%}%>
-                </tr><%}%>
+                <tr>
+                    <%
+                    for (j = 0; j < 10; j++) {
+                    %>
+                    <td><%= i + "" + j %>
+                    </td>
+                    <%}%>
+                </tr>
+                <%
+                }
+
+                %>
             </table>
         </div>
 
@@ -167,4 +167,3 @@ IENY
 </body>
 
 </html>
-

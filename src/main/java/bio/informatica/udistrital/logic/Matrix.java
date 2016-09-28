@@ -84,9 +84,9 @@ public class Matrix {
             int scoreDiagonal = getValueIn(i - 1, j - 1);
             int scoreUp = getValueIn(i, j - 1);
             int scoreLeft = getValueIn(i - 1, j);
-            System.out.println("initial row->" + i + " column->" + j + " score->" + score);
+            //System.out.println("initial row->" + i + " column->" + j + " score->" + score);
             if (score == scoreDiagonal + simular(rowNitrogenousBases.get(i - 1).getPosition(), columnNitrogenousBases.get(j - 1).getPosition())) {
-                System.out.println("diagonal row->" + i + " column->" + j);
+                //System.out.println("diagonal row->" + i + " column->" + j);
                 alA = rowNitrogenousBases.get(i - 1).getLetter() + alA;
                 alB = columnNitrogenousBases.get(j - 1).getLetter() + alB;
                 i--;
@@ -95,7 +95,7 @@ public class Matrix {
                 position.setRowNitrogenousBase(rowNitrogenousBases.get(i));
                 position.setColumnNitrogenousBase(columnNitrogenousBases.get(j));
             } else if (score == scoreLeft + D) {
-                System.out.println("left row->" + i + " column->" + j);
+                //System.out.println("left row->" + i + " column->" + j);
                 alA = rowNitrogenousBases.get(i - 1).getLetter() + alA;
                 alB = "-" + alB;
                 i--;
@@ -104,7 +104,7 @@ public class Matrix {
                 position.setRowNitrogenousBase(rowNitrogenousBases.get(i));
 
             } else if (score == scoreUp + D) {
-                System.out.println("up row->" + i + " column->" + j);
+                //System.out.println("up row->" + i + " column->" + j);
                 alA = "-" + alA;
                 alB = columnNitrogenousBases.get(j - 1) + alB;
                 j--;
@@ -133,9 +133,9 @@ public class Matrix {
         }
 
         Collections.reverse(positions);
-        System.out.println(alB);
-        System.out.println(alA);
-        System.out.println(positions);
+//        System.out.println(alB);
+//        System.out.println(alA);
+//        System.out.println(positions);
 
 
     }

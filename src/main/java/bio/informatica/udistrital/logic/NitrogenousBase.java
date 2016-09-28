@@ -5,6 +5,9 @@
  */
 package bio.informatica.udistrital.logic;
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * @author UDistrital
  */
@@ -30,7 +33,14 @@ public enum NitrogenousBase {
         return letter;
     }
 
+    public static List<NitrogenousBase> getBases(List<String> values) {
 
+        List<NitrogenousBase> nitrogenousBases = new LinkedList<>();
+        values.forEach(letter -> nitrogenousBases.add(NitrogenousBase.valueOf(letter)));
+        return nitrogenousBases;
+
+
+    }
 
 
 }

@@ -12,10 +12,14 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
@@ -29,8 +33,39 @@ public class GreetingController {
         return new Greeting(counter.incrementAndGet(), String.format(template, name));
     }
 
-    @RequestMapping("/matrix")
-    public Map<String, Object> matrix() {
+
+    int counterSequeces = 0;
+
+    @CrossOrigin(origins = "http://localhost:8000")
+    @PostMapping("/alignment")
+    public Map<String, Object> matrix(@RequestParam("archivoFasta") MultipartFile file) throws IOException {
+        File temp = null;
+
+        temp = File.createTempFile("fasta", ".fasta");
+        file.transferTo(temp);
+
+        counterSequeces = 0;
+        Map<String, List<NitrogenousBase>> sequences = new HashMap<>();
+        List<String> names = new ArrayList<>();
+
+        Path path = Paths.get(temp.toURI());
+        List<String> lines = Files.readAllLines(path);
+        lines.forEach(line -> {
+            if (line.startsWith(">")) {
+                names.add(counterSequeces, line.substring(1));
+                counterSequeces++;
+
+            } else {
+                String name = names.get(counterSequeces - 1);
+                if (!sequences.containsKey(name)) {
+                    sequences.put(name, new ArrayList<>());
+                }
+                List<NitrogenousBase> before = sequences.get(name);
+                List<String> ts = Arrays.asList(line.split(""));
+                before.addAll(NitrogenousBase.getBases(ts));
+                sequences.put(name, before);
+            }
+        });
 
         Matrix m;
         List<NitrogenousBase> sequence1 = Arrays.asList(
@@ -53,19 +88,9 @@ public class GreetingController {
                 NitrogenousBase.T
         );
 
-        m = new Matrix(sequence2, sequence1);
+        m = new Matrix(sequences.get(names.get(1)), sequences.get(names.get(0)));
 
-        int r = m.getRows();
-        int c = m.getColumns();
 
-        for (int i = 0; i < r; i++) {
-            for (int j = 0; j < c; j++) {
-                System.out.print(m.getValueIn(i, j) + "\t");
-            }
-            System.out.println("");
-        }
-
-        System.out.println("final score" + m.getScore());
         Map<String, Object> value = new HashMap<>();
         value.put("matrix", m.getMatrix());
         value.put("alignment", m.getPathWay());
@@ -73,8 +98,9 @@ public class GreetingController {
         return value;
     }
 
+    @CrossOrigin(origins = "http://localhost:8000")
     @RequestMapping(value = "/post-file", method = RequestMethod.POST)
-    public Map<String, String> handleFileUpload(MultipartHttpServletRequest defaultMultipartHttpServletRequest, RedirectAttributes redirectAttributes) {
+    public Map<String, String> handleFileUpload(@RequestParam("archivoFasta") MultipartFile file, RedirectAttributes redirectAttributes) {
 
         /*storageService.store(file);
         redirectAttributes.addFlashAttribute("message",
