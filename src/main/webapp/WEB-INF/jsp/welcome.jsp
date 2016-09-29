@@ -92,14 +92,14 @@ IENY
         </div>
         <div class="row">
 
-            <table class="table table-bordered">
-                <%
-                    int i = 0, j = 0;
-                    for (i = 0; i < 10; i++) {
-                %>
-                <tr><% for (j = 0; j < 10; j++) { %>
-                    <td><%= i + "" + j %></td><%}%>
-                </tr><%}%>
+            <table id="tablita" class="table table-bordered">
+                <%-- <%
+                     int i = 0, j = 0;
+                     for (i = 0; i < 10; i++) {
+                 %>
+                 <tr><% for (j = 0; j < 10; j++) { %>
+                     <td><%= i + "" + j %></td><%}%>
+                 </tr><%}%>--%>
             </table>
         </div>
 

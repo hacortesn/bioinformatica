@@ -94,6 +94,8 @@ public class GreetingController {
         Map<String, Object> value = new HashMap<>();
         value.put("matrix", m.getMatrix());
         value.put("alignment", m.getPathWay());
+        value.put("sequence1", sequences.get(names.get(1)));
+        value.put("sequence2", sequences.get(names.get(0)));
 
         return value;
     }
