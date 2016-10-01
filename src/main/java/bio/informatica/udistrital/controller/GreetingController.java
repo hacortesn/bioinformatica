@@ -9,16 +9,10 @@ import bio.informatica.udistrital.logic.NitrogenousBase;
 import bio.informatica.udistrital.model.Greeting;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -48,7 +42,7 @@ public class GreetingController {
         Map<String, List<NitrogenousBase>> sequences = new HashMap<>();
         List<String> names = new ArrayList<>();
 
-        Path path = Paths.get(temp.toURI());
+        /*Path path = Paths.get(temp.toURI());
         List<String> lines = Files.readAllLines(path);
         lines.forEach(line -> {
             if (line.startsWith(">")) {
@@ -65,7 +59,7 @@ public class GreetingController {
                 before.addAll(NitrogenousBase.getBases(ts));
                 sequences.put(name, before);
             }
-        });
+        });*/
 
         Matrix m;
         List<NitrogenousBase> sequence1 = Arrays.asList(
@@ -80,22 +74,24 @@ public class GreetingController {
         );
 
         List<NitrogenousBase> sequence2 = Arrays.asList(
+                NitrogenousBase.T,
+                NitrogenousBase.G,
                 NitrogenousBase.C,
                 NitrogenousBase.G,
                 NitrogenousBase.T,
                 NitrogenousBase.C,
-                NitrogenousBase.T,
                 NitrogenousBase.T
         );
 
-        m = new Matrix(sequences.get(names.get(1)), sequences.get(names.get(0)));
+        //m = new Matrix(sequences.get(names.get(1)), sequences.get(names.get(0)));
+        m = new Matrix(sequence2, sequence1);
 
 
         Map<String, Object> value = new HashMap<>();
         value.put("matrix", m.getMatrix());
         value.put("alignment", m.getPathWay());
-        value.put("sequence1", sequences.get(names.get(1)));
-        value.put("sequence2", sequences.get(names.get(0)));
+        value.put("horizontalBases", m.getRowNitrogenousBases());
+        value.put("verticalBases", m.getColumnNitrogenousBases());
 
         return value;
     }

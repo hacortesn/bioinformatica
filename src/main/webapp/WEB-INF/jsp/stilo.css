@@ -1,0 +1,93 @@
+.an-A {
+    background-color: #0087BD;
+}
+
+.an-T {
+    background-color: #C40233;
+}
+
+.an-C {
+    background-color: #ffd300;
+}
+
+.an-G {
+    background-color: #009f6b;
+}
+
+.an {
+    text-align: center;
+    font-weight: bolder;
+    color: antiquewhite;
+}
+
+.score {
+
+    font-weight: bolder;
+    background-color: #9e9e9e;
+    color: antiquewhite;
+    text-align: center;
+    vertical-align: inherit !important;
+}
+
+.cell-active, .cell:hover {
+    -webkit-animation-name: thumb;
+    -webkit-animation-duration: 250ms;
+    -webkit-transform-origin: 50% 50%;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+
+}
+
+@-webkit-keyframes thumb {
+    0% {
+        -webkit-transform: scale(1);
+    }
+    50% {
+        -webkit-transform: scale(0.9);
+    }
+    100% {
+        -webkit-transform: scale(1);
+    }
+}
+
+.al-cell-active, .ali:hover {
+    -webkit-animation-name: thumb;
+    -webkit-animation-duration: 200ms;
+    -webkit-transform-origin: 50% 50%;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+}
+
+.cell {
+    background-color: #67ff86;
+    transition: all .1s ease-in-out;
+
+}
+
+/* Start by setting display:none to make this hidden.
+   Then we position it in relation to the viewport window
+   with position:fixed. Width, height, top and left speak
+   for themselves. Background we set to 80% white with
+   our animation centered, and no-repeating */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(255, 255, 255, .8) url('http://i.stack.imgur.com/FhHRx.gif') 50% 50% no-repeat;
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.loading {
+    overflow: hidden;
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .modal {
+    display: block;
+}

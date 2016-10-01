@@ -79,7 +79,11 @@ public class Matrix {
         Position position = null;//= new Position(i, j, rowNitrogenousBases.get(i - 1), columnNitrogenousBases.get(j - 1), getValueIn(i, j));
         //positions.add(position);
 
-        while (i > 0 && j > 0) {
+        while (i >= 0 && j >= 0) {
+
+            if (i - 1 < 0 || j - 1 < 0)
+                break;
+
             int score = getValueIn(i, j);
             int scoreDiagonal = getValueIn(i - 1, j - 1);
             int scoreUp = getValueIn(i, j - 1);
@@ -91,7 +95,7 @@ public class Matrix {
                 alB = columnNitrogenousBases.get(j - 1).getLetter() + alB;
                 i--;
                 j--;
-                position = new Position(i, j, score);
+                position = new Position(i, j, simular(rowNitrogenousBases.get(i).getPosition(), columnNitrogenousBases.get(j).getPosition()));
                 position.setRowNitrogenousBase(rowNitrogenousBases.get(i));
                 position.setColumnNitrogenousBase(columnNitrogenousBases.get(j));
             } else if (score == scoreLeft + D) {
@@ -100,7 +104,7 @@ public class Matrix {
                 alB = "-" + alB;
                 i--;
 
-                position = new Position(i, j, score);
+                position = new Position(i, j, D);
                 position.setRowNitrogenousBase(rowNitrogenousBases.get(i));
 
             } else if (score == scoreUp + D) {
@@ -109,9 +113,10 @@ public class Matrix {
                 alB = columnNitrogenousBases.get(j - 1) + alB;
                 j--;
 
-                position = new Position(i, j, score);
+                position = new Position(i, j, D);
                 position.setColumnNitrogenousBase(columnNitrogenousBases.get(j));
             }
+
             positions.add(position);
 
         }
@@ -119,7 +124,7 @@ public class Matrix {
             alA = rowNitrogenousBases.get(i - 1) + alA;
             alB = "-" + alB;
             i--;
-            position = new Position(-1, -1, 0);
+            position = new Position(i, -1, -5);
             position.setRowNitrogenousBase(rowNitrogenousBases.get(i));
             positions.add(position);
         }
@@ -127,7 +132,7 @@ public class Matrix {
             alA = "-" + alA;
             alB = columnNitrogenousBases.get(j - 1) + alB;
             j--;
-            position = new Position(-1, -1, 0);
+            position = new Position(-1, j, -5);
             position.setColumnNitrogenousBase(columnNitrogenousBases.get(j));
             positions.add(position);
         }
@@ -170,5 +175,21 @@ public class Matrix {
 
     public List<Position> getPathWay() {
         return positions;
+    }
+
+    public List<NitrogenousBase> getRowNitrogenousBases() {
+        return rowNitrogenousBases;
+    }
+
+    public void setRowNitrogenousBases(List<NitrogenousBase> rowNitrogenousBases) {
+        this.rowNitrogenousBases = rowNitrogenousBases;
+    }
+
+    public List<NitrogenousBase> getColumnNitrogenousBases() {
+        return columnNitrogenousBases;
+    }
+
+    public void setColumnNitrogenousBases(List<NitrogenousBase> columnNitrogenousBases) {
+        this.columnNitrogenousBases = columnNitrogenousBases;
     }
 }
