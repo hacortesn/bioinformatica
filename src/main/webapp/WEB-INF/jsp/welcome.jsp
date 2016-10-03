@@ -8,6 +8,7 @@
 
 <html lang="en">
 <head>
+    <title>Alineación</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 
@@ -15,17 +16,15 @@
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
 
-    <script src="/public/js/ini.js"></script>
+    <script src="/static/js/ini.js"></script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/estilo.css">
 
-    <script src="ini.js"></script>
-
-    <!-- Latest compiled and minified JavaScript -->
 </head>
 
 <body>
@@ -75,32 +74,51 @@ IENY
                 </pre>
             </div>
         </div>
-
         <div class="row">
             <div class="col-md-2">
-                <form>
+                <form id="subirArchivo">
                     <div class="form-group">
-                        <label for="exampleInputFile">Fasta file:</label>
-                        <input type="file" id="exampleInputFile">
+                        <label for="archivoFasta">Fasta file:</label>
+                        <input type="file" id="archivoFasta" name="archivoFasta">
                     </div>
 
-                    <button type="submit" class="btn btn-default">Submit</button>
+                    <button id="botonSubirArchivo" type="button" class="btn btn-default">Submit</button>
                 </form>
             </div>
 
 
         </div>
         <div class="row">
+            <div class="alert alert-success">
+                El archivo ha sido procesado
+            </div>
+            <div class="alert alert-danger">
+                Hay un error procesando el archivo
+            </div>
+        </div>
+        <div class="row">
+            <h3>Alineación</h3>
+            <div class="table-responsive">
 
-            <table id="tablita" class="table table-bordered">
-                <%-- <%
-                     int i = 0, j = 0;
-                     for (i = 0; i < 10; i++) {
-                 %>
-                 <tr><% for (j = 0; j < 10; j++) { %>
-                     <td><%= i + "" + j %></td><%}%>
-                 </tr><%}%>--%>
-            </table>
+                <table id="tablaAlineacion" class="table table-bordered">
+                    <tr>
+                        <td>Sin Alineamiento</td>
+                    </tr>
+                </table>
+
+
+            </div>
+            <br/>
+            <h3>Matriz</h3>
+            <div class="table-responsive">
+
+                <table id="matrix" class="table table-bordered">
+                    <tr>
+                        <td>Sin Matriz</td>
+                    </tr>
+                </table>
+
+            </div>
         </div>
 
 
@@ -162,6 +180,7 @@ IENY
         </div>
     </div>
 </div>
+<div class="modal"><!-- Place at bottom of page --></div>
 
 
 </body>

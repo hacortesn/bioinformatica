@@ -2,7 +2,7 @@ var htmlAlignment
 var htmlMatrix;
 
 $(function (e) {
-    htmlMatrix = $("#tablita").html()
+    htmlMatrix = $("#matrix").html()
     htmlAlignment = $("#tablaAlineacion").html()
     $(".alert").show().fadeOut();
     $("#botonSubirArchivo").click(function (e) {
@@ -29,7 +29,7 @@ $(function (e) {
                 console.log(err)
                 // ...
 
-                var tableMatrix = $("#tablita");
+                var tableMatrix = $("#matrix");
                 var tablaAlineacion = $("#tablaAlineacion");
 
                 tableMatrix.hide();
@@ -52,7 +52,7 @@ $(function (e) {
 
 function table(data) {
     var tb = data.matrix;
-    var tableMatrix = $("#tablita");
+    var tableMatrix = $("#matrix");
     var tablaAlineacion = $("#tablaAlineacion");
 
     tableMatrix.hide();

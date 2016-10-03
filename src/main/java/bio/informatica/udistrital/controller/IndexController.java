@@ -17,7 +17,7 @@ public class IndexController {
     @Value("${application.message:Hello World}")
     private String message = "Hello World";
 
-    @GetMapping("/index.hacn")
+    @GetMapping(value = "/")
     public String welcome(Map<String, Object> model) {
         model.put("time", new Date());
         model.put("message", "mensajito");

@@ -13,6 +13,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -42,7 +45,7 @@ public class GreetingController {
         Map<String, List<NitrogenousBase>> sequences = new HashMap<>();
         List<String> names = new ArrayList<>();
 
-        /*Path path = Paths.get(temp.toURI());
+        Path path = Paths.get(temp.toURI());
         List<String> lines = Files.readAllLines(path);
         lines.forEach(line -> {
             if (line.startsWith(">")) {
@@ -59,7 +62,7 @@ public class GreetingController {
                 before.addAll(NitrogenousBase.getBases(ts));
                 sequences.put(name, before);
             }
-        });*/
+        });
 
         Matrix m;
         List<NitrogenousBase> sequence1 = Arrays.asList(
@@ -83,8 +86,8 @@ public class GreetingController {
                 NitrogenousBase.T
         );
 
-        //m = new Matrix(sequences.get(names.get(1)), sequences.get(names.get(0)));
-        m = new Matrix(sequence2, sequence1);
+        m = new Matrix(sequences.get(names.get(1)), sequences.get(names.get(0)));
+//        m = new Matrix(sequence2, sequence1);
 
 
         Map<String, Object> value = new HashMap<>();
