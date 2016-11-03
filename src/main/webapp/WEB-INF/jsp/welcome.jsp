@@ -9,19 +9,19 @@
 <html lang="en">
 <head>
     <title>Alineación</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="/static/js/jquery.min.js"></script>
 
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    <script src="/static/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
 
     <script src="/static/js/ini.js"></script>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+    <link rel="stylesheet" href="/static/css/bootstrap-theme.min.css"
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/css/estilo.css">
 
@@ -58,13 +58,13 @@
                     usando códigos de una única letra. El formato también permite incluir nombres de secuencias y
                     comentarios que preceden a las secuencias en sí.
                     <a class="btn btn-primary" href="https://es.wikipedia.org/wiki/Formato_FASTA"
-                       role="link">Más información</a>
+                       target="_blank" role="link">Más información</a>
                 </p>
             </div>
             <div class="col-md-4">
                 <h2><p class="text-center">Ejemplo de contenido de Formato FASTA</p></h2>
             <pre>&gt;gi|5524211|gb|AAD44166.1| cytochrome b [<a
-                    href="https://es.wikipedia.org/wiki/Elephas_maximus_maximus"
+                    href="https://es.wikipedia.org/wiki/Elephas_maximus_maximus" target="_blank"
                     title="Elephas maximus maximus">Elephas maximus maximus</a>]
 LCLYTHIGRNIYYGSYLYSETWNTGIMLLLITMATAFMGYVLPWGQMSFWGATVITNLFSAIPYIGTNLV
 EWIWGGFSVDKATLNRFFAFHFILPFTMVALAGVHLTFLHETGSNNPLGLTSDSDKIPFHPYYTIKDFLG
@@ -97,27 +97,34 @@ IENY
             </div>
         </div>
         <div class="row">
-            <h3>Alineación</h3>
-            <div class="table-responsive">
+            <div class="col-md-12">
 
-                <table id="tablaAlineacion" class="table table-bordered">
-                    <tr>
-                        <td>Sin Alineamiento</td>
-                    </tr>
-                </table>
+                <h3>Alineación</h3>
+                <div class="table-responsive">
 
+                    <table id="tablaAlineacion" class="table table-bordered">
+                        <tr>
+                            <td>Sin Alineamiento</td>
+                        </tr>
+                    </table>
+
+                </div>
 
             </div>
-            <br/>
-            <h3>Matriz</h3>
-            <div class="table-responsive">
 
-                <table id="matrix" class="table table-bordered">
-                    <tr>
-                        <td>Sin Matriz</td>
-                    </tr>
-                </table>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Matriz</h3>
+                <div class="table-responsive">
 
+                    <table id="matrix" class="table table-bordered">
+                        <tr>
+                            <td>Sin Matriz</td>
+                        </tr>
+                    </table>
+
+                </div>
             </div>
         </div>
 
@@ -136,7 +143,7 @@ IENY
                     zonas
                     con idéntica o similar estructura se alineen.
                     <a class="btn btn-primary" href="https://es.wikipedia.org/wiki/Alineamiento_de_secuencias"
-                       role="link">Más información</a>
+                       target="_blank" role="link">Más información</a>
                 </p>
             </div>
             <div class="col-md-3">
@@ -150,7 +157,7 @@ IENY
                     típico de programación dinámica. El algoritmo funciona del mismo modo independientemente de la
                     complejidad o longitud de las secuencias y garantiza la obtención del mejor alineamiento.
                     <a class="btn btn-primary" href="https://es.wikipedia.org/wiki/Alineamiento_de_secuencias"
-                       role="lin">Más información</a>
+                       target="_blank" role="lin">Más información</a>
                 </p>
             </div>
         </div>

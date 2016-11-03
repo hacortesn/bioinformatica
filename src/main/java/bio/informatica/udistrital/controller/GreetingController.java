@@ -68,22 +68,12 @@ public class GreetingController {
         List<NitrogenousBase> sequence1 = Arrays.asList(
                 NitrogenousBase.A,
                 NitrogenousBase.C,
-                NitrogenousBase.C,
-                NitrogenousBase.G,
-                NitrogenousBase.T,
-                NitrogenousBase.C,
-                NitrogenousBase.T,
-                NitrogenousBase.T
+                NitrogenousBase.G
         );
 
         List<NitrogenousBase> sequence2 = Arrays.asList(
-                NitrogenousBase.T,
-                NitrogenousBase.G,
-                NitrogenousBase.C,
-                NitrogenousBase.G,
-                NitrogenousBase.T,
-                NitrogenousBase.C,
                 NitrogenousBase.T
+
         );
 
         m = new Matrix(sequences.get(names.get(1)), sequences.get(names.get(0)));
@@ -95,6 +85,8 @@ public class GreetingController {
         value.put("alignment", m.getPathWay());
         value.put("horizontalBases", m.getRowNitrogenousBases());
         value.put("verticalBases", m.getColumnNitrogenousBases());
+        value.put("sequence_1", names.get(0));
+        value.put("sequence_2", names.get(1));
 
         return value;
     }

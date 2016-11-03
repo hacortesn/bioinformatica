@@ -119,15 +119,18 @@ function table(data) {
         acm += value;
         row1 += "<td " + data_cell + " class=\" ali ali-" + position + " an an-" + bottomBase + " \"> " + (bottomBase == "NA" ? "-" : bottomBase) + " </td> ";
         row2 += "<td " + data_cell + " class=\" ali ali-" + position + " an an-" + upperBase + "\"> " + (upperBase == "NA" ? "-" : upperBase) + " </td> ";
-        row3 += "<td " + data_cell + " class=\" ali ali-" + position + " score \"> " + value + " </td> ";
+        row3 += "<td " + data_cell + " class=\" ali ali-" + position + (bottomBase == upperBase ? " green " : " red ") + " score \"> " + value + " </td> ";
 
         $("#" + position).addClass("cell way way-" + position).attr("data-cell", position);
 
     }
 
-    tablaAlineacion.append("<tr>" + row2 + "<td rowspan='3' class=\" score \">Score " + acm + "</td></tr>");
-    tablaAlineacion.append("<tr>" + row1 + "</tr>");
-    tablaAlineacion.append("<tr>" + row3 + "</tr>");
+    var tdName1 = "<td>" + data.sequence_1 + "</td>>";
+    var tdName2 = "<td>" + data.sequence_2 + "</td>>";
+
+    tablaAlineacion.append("<tr>" + tdName1 + row2 + "<td rowspan='3' class=\" score \">Score " + acm + "</td></tr>");
+    tablaAlineacion.append("<tr>" + tdName2 + row1 + "</tr>");
+    tablaAlineacion.append("<tr><td>Valores</td>" + row3 + "</tr>");
 
 
     $("td.ali")

@@ -16,7 +16,7 @@ public class Matrix {
 
     private int score = 0;
 
-    public static int[] simularity = {
+    private static int[] simularity = {
             // A    G   C   T
             10, -1, -3, -4, //A
             -1, 7, -5, -3, //G
@@ -138,6 +138,9 @@ public class Matrix {
         }
 
         Collections.reverse(positions);
+        int size = positions.size();
+        positions.get(size - 1).setRow(rows - 2);
+        positions.get(size - 1).setColumn(columns - 2);
 //        System.out.println(alB);
 //        System.out.println(alA);
 //        System.out.println(positions);

@@ -20,10 +20,18 @@
     color: antiquewhite;
 }
 
+.red {
+    background-color: #cc0c0c !important;
+}
+
+.green {
+    background-color: #589432 !important;
+}
+
 .score {
 
+    background-color : #cddc39;
     font-weight: bolder;
-    background-color: #9e9e9e;
     color: antiquewhite;
     text-align: center;
     vertical-align: inherit !important;
@@ -59,9 +67,14 @@
 }
 
 .cell {
-    background-color: #67ff86;
+    background-color: #4c4306;
     transition: all .1s ease-in-out;
+    color: antiquewhite;
 
+}
+
+table.table > td {
+    padding: 3px !important;
 }
 
 /* Start by setting display:none to make this hidden.
